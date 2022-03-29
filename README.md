@@ -228,3 +228,9 @@ ReactDOM.render(
 );
 
 </code></pre>
+
+##### 8. 리덕스에서는 디렉토리를 3개정도 생각하면 된다.(필수요소는 아님)
+
+> 1. reducer와 액션함수, 초기값을 저장하는 module 디렉토리
+> 2. view를 담당하는 components 디렉토리
+> 3. module과 view를 이어주는 containers 디렉토리

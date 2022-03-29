@@ -20,7 +20,7 @@ export const decrease = ()=>({type:DECREASE});
 
 const initState ={
     diff:1,
-    counter:0
+    counter:5
 }
 
 
@@ -38,7 +38,7 @@ export default function counter(state =initState,action){
         case INCREASE:{
             return{
                 ...state,
-                counter:state.counter +state.diff
+                counter:state.counter + state.diff
             }
         }
         case DECREASE:{
