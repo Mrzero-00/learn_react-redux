@@ -247,11 +247,9 @@ ReactDOM.render(
 > 5. createStore의 두번째 파라미터로 composeWithDevTools를 넣어준다.
 
 <code><pre>
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-    import { composeWithDevTools } from 'redux-devtools-extension';
-
-    const store = createStore(rootReducer,composeWithDevTools());
-
+const store = createStore(rootReducer,composeWithDevTools());
 </code></pre>
 
 ##### 10. 리덕스 최적화 하기
