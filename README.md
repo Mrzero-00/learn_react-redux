@@ -234,3 +234,40 @@ ReactDOM.render(
 > 1. reducer와 액션함수, 초기값을 저장하는 module 디렉토리
 > 2. view를 담당하는 components 디렉토리
 > 3. module과 view를 이어주는 containers 디렉토리
+
+##### 9. 리덕스 devtools사용하기
+
+> 리덕스를 활용할 때 유용한 devtools로 크롬 개발자 도구에서 현재 상태및 이전 상태등을 확인 할 수 있고 디스패치를 바로 실행 해 볼 수도 있다.
+> 설치 순서는 다음과 같다
+
+> 1. 크롬의 redux devtools를 설치해준다.
+> 2. npm 으로 redux-devtools-extension 을 설치한다.
+> 3. 다음 'index.js'나 createStorer를 한 코드에서 추가 해주면 된다.
+> 4. composeWithDevTools를 import한다.
+> 5. createStore의 두번째 파라미터로 composeWithDevTools를 넣어준다.
+>    <code><pre>
+
+    import { composeWithDevTools } from 'redux-devtools-extension';
+
+    const store = createStore(rootReducer,composeWithDevTools());
+
+</code></pre>
+
+##### 10. 리덕스 최적화 하기
+
+> 1. 리덕스는 하나의 스토어로 여러가지의 리듀서를 관리하기 때문에 성능 최적화가 필요함.
+> 2. 최적화시에는 리랜더링 최적화를 위한 React.memo와 리덕스의 디스패치로 인한 상태 변화로 인한 리랜더링이 있음/
+> 3. 리덕스 디스패치로 인한 상태변화는 단일 상태가 아닌 객체 형태의 값으로 값이 변화 하지 않더라도 다른 리듀서의 값이 변화 하면 리랜더링됨.
+> 4. 이것을 해결하기 위하여 react-redux 의 있는 shallowEqual 를 불러 useSelctor의 두번째 파라미터로 넣어주면됨.
+
+<pre>
+<code>
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+
+function CounterContainer () {
+    const {counter,diff} = useSelector((state)=>({
+        counter:state.counter.counter,
+        diff:state.counter.diff
+    }),shallowEqual);
+</code>
+</pre>
