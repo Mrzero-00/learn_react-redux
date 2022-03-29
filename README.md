@@ -245,7 +245,8 @@ ReactDOM.render(
 > 3. 다음 'index.js'나 createStorer를 한 코드에서 추가 해주면 된다.
 > 4. composeWithDevTools를 import한다.
 > 5. createStore의 두번째 파라미터로 composeWithDevTools를 넣어준다.
->    <code><pre>
+
+<code><pre>
 
     import { composeWithDevTools } from 'redux-devtools-extension';
 
