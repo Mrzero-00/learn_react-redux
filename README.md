@@ -270,3 +270,51 @@ function CounterContainer () {
     }),shallowEqual);
 </code>
 </pre>
+
+### 리덕스 미들웨어 적용
+
+##### 1. 리덕스는 미들웨어라는 강점을 활용하기위해서 사용한다고 생각해도 좋을 정도로 미들웨어가 좋음.
+
+##### 2. 미들웨어는 리덕스의 액션과 리듀스 사이에 존재 하며 값의 따라 액션을 리듀스에 전달을 막거나, 다른 액션을 디스패치 할 수 도 있음.
+
+##### 3. 주로 액션과 리듀스 사이에서 비동기 작업에 이용되는 경우가 많음
+
+##### 4. redux-logger 사용하기
+
+> redux-logger 란?
+> redux의 현재 디스패치 와 디스패치 이전 값 디스패치 이후 값을 콘솔에 나타내 주는 미들웨어.
+
+##### 5. redux-thunk 사용하기
+
+> redux-thunk 란?
+> redux에서 promise 를(api처리, 비동기 작업 등등) 처리하기 위한 미들웨어로 함수를 디스페치 할 수 있게 해준다.
+
+<pre>
+<code>
+export const getPosts = ()=> async dispatch=>{
+    //요청 시작
+    dispatch({type:GET_POSTS});
+
+    //요청 데이터
+    try{
+        //await를 사용해서 api 요청 상태 기다림.
+        const post = await postAPI.postsGet();
+
+        //요청 성공시
+        dispatch({
+            type:GET_POSTS_SUCCESS,
+            post
+        });
+    }
+    catch (e){
+        //요청 실패
+        dispatch({
+            type:GET_POSTS_ERROR,
+            error:e
+        });
+    }
+}
+</code>
+</pre>
+
+위의 코드처럼 const reduxThunk =() =>(dispatch)=>{미들웨어 실행 문}; 이런 식으로 작성 하게 됨.

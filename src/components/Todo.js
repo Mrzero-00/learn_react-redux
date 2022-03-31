@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 
-const TodoRender = React.momo(function TodoRender({item,onRemoveTodo,onDoneTodo}){
+function TodoRender({item,onRemoveTodo,onDoneTodo}){
     return(
-        <div>
-            <div 
+        <li>
+            <span 
                 style={{
-                    textDecoration:item.done?"underline":"none"
+                    textDecorationColor:item.done?"#ff0000":"#000",
+                    textDecoration:item.done?"line-through":"none",
                 }}
-            onClick={()=>{onDoneTodo(item.id)}}>{item.todo}</div>
+            onClick={()=>{onDoneTodo(item.id)}}>{item.todo}</span>
             <button onClick={()=>{onRemoveTodo(item.id)}}>X</button>
-        </div>
+        </li>
     )
-})
+}
 
 
 

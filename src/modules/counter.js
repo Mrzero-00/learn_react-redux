@@ -16,6 +16,22 @@ export const increase = ()=>({type:INCREASE});
 export const decrease = ()=>({type:DECREASE});
 
 
+// thunk 미들웨어를 활용 하기 위한 함수
+
+export const increaseAsync = ()=> (dispatch) =>{
+    setTimeout(() => {
+        dispatch(increase());
+    }, 1000);
+}
+
+export const decreaseAsync = ()=> (dispatch) =>{
+    setTimeout(() => {
+        dispatch(decrease());
+    }, 1000);
+}
+
+
+
 // 초기값 설정
 
 const initState ={

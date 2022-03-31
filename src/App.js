@@ -1,5 +1,6 @@
 
 import CounterContainer from "./containers/CounterContainer";
+import PostContainer from "./containers/PostContainer";
 import TodoContainer from "./containers/TodoContainer";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <CounterContainer />
       <TodoContainer/>
+      <PostContainer/>
     </>
   );
 }
